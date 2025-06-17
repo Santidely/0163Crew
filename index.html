@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>La Sesenta 0163</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .banner {
+      background-image: url('banner.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .banner::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
+
+    .center-container {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    img.logo {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .btn-services {
+      background-color: #4B0082;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-services:hover {
+      background-color: #6A0DAD;
+    }
+
+    .services-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .menu-item {
+      background-color: #222;
+      color: #ccc;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .menu-item:hover,
+    .menu-item.active {
+      background-color: #9370DB;
+      color: white;
+    }
+
+    .contenido {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-top: 2px solid #9370DB;
+    }
+
+    .barber-photo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 10px;
+      border: 2px solid #9370DB;
+    }
+
+    .whatsapp-link,
+    .instagram-link {
+      color: #9370DB;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .whatsapp-logo,
+    .instagram-logo {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="center-container">
+      <img src="logo.png" alt="Logo La Sesenta 0163" class="logo">
+      <button onclick="mostrarMenu()" id="btn-inicial" class="btn-services">Productos y Servicios</button>
+    </div>
+  </div>
+
+  <!-- Menú de servicios -->
+  <div id="menu" class="services-menu" style="display:none;">
+    <div class="menu-item active" onclick="cambiarSeccion('ribete')">Ribete</div>
+    <div class="menu-item" onclick="cambiarSeccion('produccion')">Producción Tema</div>
+    <div class="menu-item" onclick="cambiarSeccion('web')">Diseños Web</div>
+    <div class="menu-item" onclick="cambiarSeccion('indumentaria')">Indumentaria</div>
+  </div>
+
+  <!-- Contenido dinámico -->
+  <div id="contenido" class="contenido"></div>
+
+  <!-- Footer -->
+  <footer>
+    Todos los derechos reservados - La Sesenta 0163
+  </footer>
+
+  <script>
+    function mostrarMenu() {
+      document.getElementById("btn-inicial").style.display = "none";
+      document.getElementById("menu").style.display = "flex";
+      cambiarSeccion('ribete'); // Mostrar ribete al inicio
+    }
+
+    function cambiarSeccion(seccion) {
+      document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+
+      const contenedor = document.getElementById("contenido");
+
+      switch (seccion) {
+        case 'ribete':
+          document.querySelector('[onclick="cambiarSeccion(\'ribete\')"]').classList.add('active');
+          contenedor.innerHTML = `
+            <div style="text-align:center;">
+              <h3>Ribete</h3>
+              <p><strong>Deli63</strong></p>
+              <p style="color:#aaa;">Barber Activo</p>
+              <img src="deli63.jpg" alt="Deli63 - Barbero" class="barber-photo">
+              <p style="margin-top:15px;">
+                Saca turno en 
+                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
+                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> WhatsApp
+                </a>
+              </p>
+              <p style="margin-top:10px;">
+                O contacta por IG
+                <br>
+                <a href="https://www.instagram.com/santidely"  target="_blank" class="instagram-link">
+                  <img src="instagram.png" alt="Instagram" class="instagram-logo"> @santidely
+                </a>
+              </p>
+            </div>
+          `;
+          break;
+
+        case 'produccion':
+          document.querySelector('[onclick="cambiarSeccion(\'produccion\')"]').classList.add('active');
+          contenedor.innerHTML = `
+            <div>
+              <h3>Producción Musical</h3>
+              <p>
+                Creamos sonidos únicos adaptados a tu estilo. ¿Querés grabarte un tema o necesitás un beat original? En <strong>La Sesenta</strong>, te ayudamos a encontrar tu identidad musical.
+              </p>
+              <p>
+                <em>Beat personalizado • Grabación profesional • Mezcla & mastering</em>
+              </p>
+              <p>
+                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
+                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> Consultá por beat o grabación
+                </a>
+              </p>
+            </div>
+          `;
+          break;
+
+        case 'web':
+          document.querySelector('[onclick="cambiarSeccion(\'web\')"]').classList.add('active');
+          contenedor.innerHTML = `
+            <div>
+              <h3>Diseño de Páginas Web</h3>
+              <p>
+                Creamos páginas web modernas, únicas y profesionales para que tu proyecto tenga presencia digital con estilo underground.
+              </p>
+              <p>
+                <em>Páginas responsivas • Diseño único • Integración completa</em>
+              </p>
+              <p>
+                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
+                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> Contactanos para diseñar tu sitio
+                </a>
+              </p>
+            </div>
+          `;
+          break;
+
+        case 'indumentaria':
+          document.querySelector('[onclick="cambiarSeccion(\'indumentaria\')"]').classList.add('active');
+          contenedor.innerHTML = `
+            <div>
+              <h3>Indumentaria Hecha a Mano</h3>
+              <p>
+                <strong>63Drop by La Sesenta 0163</strong> está llegando con una línea de indumentaria única, hecha a medida y con textiles premium seleccionados uno por uno.
+              </p>
+              <p>
+                Camisetas, hoodies, gorras y mucho más, todos con diseños exclusivos y confección artesanal. Cada prenda lleva el sello de <strong>La Sesenta 0163</strong>: auténticos, urbanos y con actitud.
+              </p>
+              <p style="color:#9370DB; font-weight:bold;">
+                Próximamente – Edición Limitada
+              </p>
+            </div>
+          `;
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>

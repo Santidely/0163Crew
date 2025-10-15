@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>La Sesenta 0163</title>
+  <title>0163 Crew – Barbería • Beats • Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -12,17 +15,19 @@
     }
 
     body {
-      background-color: #000;
+      background: 
+        linear-gradient(135deg, #000, #100015),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='1' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
       color: white;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
 
     .banner {
       background-image: url('banner.jpg');
       background-size: cover;
       background-position: center;
-      height: 400px;
+      height: 300px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -33,221 +38,331 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,0.7);
     }
 
-    .center-container {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px; /* Espaciado ajustado */
-    }
-
-    img.logo {
-      max-width: 250px; /* Logo achicado */
+    .logo {
+      max-width: 220px;
       width: 100%;
-      border-radius: 10px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
     }
 
-    .btn-services {
-      background-color: #4B0082;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn-services:hover {
-      background-color: #6A0DAD;
-    }
-
-    .services-menu {
+    nav {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px auto;
-      max-width: 600px;
+      gap: 12px;
+      padding: 20px 16px;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #2a2a2a;
     }
 
-    .menu-item {
-      background-color: #222;
+    .nav-btn {
+      background: transparent;
+      border: 2px solid #9370DB;
       color: #ccc;
-      padding: 10px 20px;
-      border-radius: 25px;
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-family: inherit;
+      font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: all 0.25s ease;
     }
 
-    .menu-item:hover,
-    .menu-item.active {
-      background-color: #9370DB;
+    .nav-btn.active,
+    .nav-btn:hover {
+      background: #9370DB;
       color: white;
     }
 
-    .contenido {
-      max-width: 600px;
-      margin: 20px auto;
-      padding: 20px;
-      border-top: 2px solid #9370DB;
+    main {
+      max-width: 680px;
+      margin: 30px auto;
+      padding: 0 20px;
     }
 
-    .barber-photo {
-      width: 100px;
-      height: 100px;
+    .section-content {
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .highlight {
+      color: #9370DB;
+      font-weight: 700;
+    }
+
+    /* Tarjeta de barbero */
+    .barbero-card {
+      background: rgba(26,26,26,0.9);
+      border: 2px solid #9370DB;
+      border-radius: 16px;
+      padding: 20px;
+      width: 100%;
+      max-width: 280px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .barbero-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .barbero-photo {
+      width: 90px;
+      height: 90px;
       object-fit: cover;
       border-radius: 50%;
-      margin-top: 10px;
       border: 2px solid #9370DB;
+      margin-bottom: 12px;
     }
 
-    .whatsapp-link,
-    .instagram-link {
-      color: #9370DB;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      margin-top: 10px;
+    /* Catálogo */
+    .corte-card {
+      background: #1a1a1a;
+      padding: 16px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 260px;
+      margin-top: 12px;
+      border: 1px solid #2a2a2a;
+      text-align: left;
     }
 
-    .whatsapp-logo,
-    .instagram-logo {
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
+    .corte-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #555;
+      font-size: 0.9rem;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Banner -->
   <div class="banner">
-    <div class="center-container">
-      <img src="logo.png" alt="Logo La Sesenta 0163" class="logo">
-      <button onclick="mostrarMenu()" id="btn-inicial" class="btn-services">Productos y Servicios</button>
-    </div>
+    <img src="logo.png" alt="0163 Crew" class="logo">
   </div>
 
-  <!-- Menú de servicios -->
-  <div id="menu" class="services-menu" style="display:none;">
-    <div class="menu-item active" onclick="cambiarSeccion('ribete')">Ribete Fino</div>
-    <div class="menu-item" onclick="cambiarSeccion('produccion')">Beats by La Sese</div>
-    <div class="menu-item" onclick="cambiarSeccion('web')">Diseños Web</div>
-    <div class="menu-item" onclick="cambiarSeccion('indumentaria')">Indumentaria</div>
-  </div>
+  <nav>
+    <button class="nav-btn active" data-section="ribete">Barbería</button>
+    <button class="nav-btn" data-section="produccion">Beats</button>
+    <button class="nav-btn" data-section="web">Diseño Web</button>
+  </nav>
 
-  <!-- Contenido dinámico -->
-  <div id="contenido" class="contenido"></div>
+  <main>
+    <div id="contenido" class="section-content"></div>
+  </main>
 
-  <!-- Footer -->
   <footer>
-    Todos los derechos reservados - La Sesenta 0163
+    © 2025 0163 Crew
   </footer>
 
   <script>
-    function mostrarMenu() {
-      document.getElementById("btn-inicial").style.display = "none";
-      document.getElementById("menu").style.display = "flex";
-      cambiarSeccion('ribete'); // Mostrar ribete al inicio
-    }
+    const sections = {
+      ribete: `
+        <h2>Ribete Fino</h2>
+        <p style="color:#aaa; font-size:0.95rem; margin-bottom:24px;">Seleccioná tu barbero y agendá tu turno</p>
 
-    function cambiarSeccion(seccion) {
-      document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+        <div id="lista-barberos" style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center; margin-bottom:30px;">
+          <div class="barbero-card" data-id="63dely">
+            <img src="deli63.jpg" alt="63dely" class="barbero-photo">
+            <h3 style="color:white; margin-bottom:8px;">63dely</h3>
+            <p style="color:#ccc; font-size:0.9rem;">Barbero profesional • Fade, skin, barba</p>
+          </div>
+        </div>
 
-      const contenedor = document.getElementById("contenido");
+        <div id="perfil-barbero" style="display:none; text-align:center; position:relative; padding-top:20px;">
+          <button id="btn-volver" style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: transparent;
+            border: none;
+            color: #9370DB;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          ">
+            ← Volver
+          </button>
 
-      switch (seccion) {
-        case 'ribete':
-          document.querySelector('[onclick="cambiarSeccion(\'ribete\')"]').classList.add('active');
-          contenedor.innerHTML = `
-            <div style="text-align:center;">
-              <h3>Barbería</h3>
-              <p><strong>Deli63</strong></p>
-              <p style="color:#aaa;">Barber Activo</p>
-              <img src="deli63.jpg" alt="Deli63 - Barbero" class="barber-photo">
-              <p style="margin-top:15px; font-style:italic;">
-                Tu ribete tiene que estar fino todo el tiro.  
-                Invertí en tu estilo.
-              </p>
-              <p style="margin-top:10px;">
-                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
-                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> Saca turno en WhatsApp
-                </a>
-              </p>
-              <p style="margin-top:10px;">
-                O contacta por IG
-                <br>
-                <a href="https://www.instagram.com/santidely"  target="_blank" class="instagram-link">
-                  <img src="instagram.png" alt="Instagram" class="instagram-logo"> @santidely
-                </a>
-              </p>
-            </div>
-          `;
-          break;
+          <h3 style="margin-bottom:16px; color:white;">63dely</h3>
+          <img src="deli63.jpg" alt="63dely" style="
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #9370DB;
+            margin-bottom: 20px;
+          ">
 
-        case 'produccion':
-          document.querySelector('[onclick="cambiarSeccion(\'produccion\')"]').classList.add('active');
-          contenedor.innerHTML = `
-            <div>
-              <h3>Beats by La Sese</h3>
-              <p>
-                ¿Estás buscando un Beat que pegue con tu estilo?
-                Despreocupate ñero, nuestro productor de <strong style="color:#9370DB;">la sese</strong> tiene la teka para dar con lo que estás buscando.
-              </p>
-              <p style="margin-top:15px;">
-                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
-                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> Consultá por tu beat
-                </a>
-              </p>
-            </div>
-          `;
-          break;
+          <button id="btn-catalogo" style="
+            background: #4B0082;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 16px 0;
+            transition: background 0.2s;
+          ">👁️ Ver catálogo de cortes</button>
 
-        case 'web':
-          document.querySelector('[onclick="cambiarSeccion(\'web\')"]').classList.add('active');
-          contenedor.innerHTML = `
-            <div>
-              <h3>Diseño de Páginas Web</h3>
-              <p>
-                Creamos páginas web modernas, únicas y profesionales para que tu proyecto tenga presencia digital con estilo underground.
-              </p>
-              <p>
-                <em>Páginas responsivas • Diseño único • Integración completa</em>
-              </p>
-              <p>
-                <a href="https://wa.link/mchcm5"  target="_blank" class="whatsapp-link">
-                  <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-logo"> Contactanos para diseñar tu sitio
-                </a>
-              </p>
-            </div>
-          `;
-          break;
+          <div id="catalogo" style="display:none; margin-top:20px;"></div>
 
-        case 'indumentaria':
-          document.querySelector('[onclick="cambiarSeccion(\'indumentaria\')"]').classList.add('active');
-          contenedor.innerHTML = `
-            <div>
-              <h3>Indumentaria Hecha a Mano</h3>
-              <p>
-                <strong>63Drop by La Sesenta 0163</strong> está llegando con una línea de indumentaria única, hecha a medida y con textiles premium seleccionados uno por uno.
-              </p>
-              <p>
-                Camisetas, hoodies, gorras y mucho más, todos con diseños exclusivos y confección artesanal. Cada prenda lleva el sello de <strong>La Sesenta 0163</strong>: auténticos, urbanos y con actitud.
-              </p>
-              <p style="color:#9370DB; font-weight:bold; margin-top:15px;">
-                Próximamente – Edición Limitada
-              </p>
-            </div>
-          `;
-          break;
+          <a href="https://wa.link/mchcm5" target="_blank" style="
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            margin: 16px 0;
+            transition: background 0.2s;
+          ">💬 Contacto rápido por WhatsApp</a>
+
+          <p style="margin-top:20px;">
+            O escribinos por Instagram<br>
+            <a href="https://www.instagram.com/santidely" target="_blank" style="
+              display: inline-block;
+              background: #2a2a2a;
+              color: #9370DB;
+              text-decoration: none;
+              padding: 8px 20px;
+              border-radius: 30px;
+              font-weight: 600;
+              margin-top: 8px;
+            ">@santidely</a>
+          </p>
+        </div>
+      `,
+      produccion: `
+        <h2>Beats by La Sese</h2>
+        <p>¿Buscás un beat que pegue con tu flow?</p>
+        <p>Nuestro productor tiene la teka para dar con lo que necesitás.</p>
+        <a href="https://wa.link/mchcm5" target="_blank" class="contact-link" style="
+          display: inline-block;
+          background: #1a1a1a;
+          color: #9370DB;
+          text-decoration: none;
+          padding: 10px 20px;
+          border-radius: 30px;
+          font-weight: 600;
+          margin-top: 12px;
+        ">💬 Consultá por tu beat</a>
+      `,
+      web: `
+        <h2>Diseño de Páginas Web</h2>
+        <p>Creamos webs modernas, únicas y profesionales con estilo underground.</p>
+        <a href="https://wa.link/mchcm5" target="_blank" class="contact-link" style="
+          display: inline-block;
+          background: #1a1a1a;
+          color: #9370DB;
+          text-decoration: none;
+          padding: 10px 20px;
+          border-radius: 30px;
+          font-weight: 600;
+          margin-top: 12px;
+        ">💻 Quiero mi web</a>
+      `
+    };
+
+    function renderSection(id) {
+      document.getElementById('contenido').innerHTML = sections[id];
+
+      if (id === 'ribete') {
+        const listaBarberos = document.getElementById('lista-barberos');
+        const perfilBarbero = document.getElementById('perfil-barbero');
+        const btnVolver = document.getElementById('btn-volver');
+        const btnCatalogo = document.getElementById('btn-catalogo');
+        const catalogoDiv = document.getElementById('catalogo');
+        let catalogoCreado = false;
+
+        if (listaBarberos) {
+          listaBarberos.addEventListener('click', (e) => {
+            if (e.target.closest('.barbero-card')) {
+              listaBarberos.style.display = 'none';
+              perfilBarbero.style.display = 'block';
+            }
+          });
+        }
+
+        if (btnVolver) {
+          btnVolver.addEventListener('click', () => {
+            perfilBarbero.style.display = 'none';
+            listaBarberos.style.display = 'flex';
+          });
+        }
+
+        if (btnCatalogo) {
+          btnCatalogo.addEventListener('click', () => {
+            if (!catalogoCreado) {
+              catalogoDiv.innerHTML = `
+                <h3 style="text-align:center; margin-bottom:20px; color:white;">Catálogo de Cortes</h3>
+                <div id="grid" style="display:flex; flex-wrap:wrap; gap:16px; justify-content:center;"></div>
+              `;
+              const grid = document.getElementById('grid');
+              const cortes = [
+                { img: 'corte1.jpg', nombre: 'Fade Low', desc: 'Clásico moderno. Limpio y bajo.', precio: '$1500' },
+                { img: 'corte2.jpg', nombre: 'Skin Fade', desc: 'Transición suave desde piel hasta pelo.', precio: '$1800' },
+                { img: 'corte3.jpg', nombre: 'Barba Estilizada', desc: 'Forma, líneas y contorno perfectos.', precio: '$1200' }
+              ];
+              cortes.forEach((c, i) => {
+                setTimeout(() => {
+                  const card = document.createElement('div');
+                  card.className = 'corte-card';
+                  card.innerHTML = `
+                    <img src="${c.img}" alt="${c.nombre}" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px;">
+                    <h4 style="color:white; margin-bottom:6px;">${c.nombre}</h4>
+                    <p style="font-size:0.88rem; color:#ccc; margin-bottom:10px;">${c.desc}</p>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span style="font-weight:bold; color:#9370DB;">${c.precio}</span>
+                      <button onclick="window.open('https://wa.link/mchcm5', '_blank')" style="background:#4B0082; color:white; border:none; padding:6px 14px; border-radius:20px; font-size:0.85rem; cursor:pointer;">Agendar</button>
+                    </div>
+                  `;
+                  grid.appendChild(card);
+                }, i * 150);
+              });
+              catalogoCreado = true;
+            }
+            catalogoDiv.style.display = catalogoDiv.style.display === 'block' ? 'none' : 'block';
+            btnCatalogo.textContent = catalogoDiv.style.display === 'block' ? '❌ Ocultar catálogo' : '👁️ Ver catálogo de cortes';
+          });
+        }
       }
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          renderSection(btn.dataset.section);
+        });
+      });
+      renderSection('ribete');
+    });
   </script>
 
 </body>
